@@ -8,8 +8,14 @@ const PORT = process.env.PORT || 3000;
 app.get("/", async (req, res) => {
     try {
         const url = "https://www.sportotohedef15.com/sportoto_formulleri_tahminleri_analizleri_yorumlari/spor_toto_yorumlar.php";
-        const { data } = await axios.get(url);
-        const $ = cheerio.load(data);
+const { data } = await axios.get(url, {
+    headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml",
+        "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
+        "Connection": "keep-alive"
+    }
+});        const $ = cheerio.load(data);
 
         let percentages = [];
 
